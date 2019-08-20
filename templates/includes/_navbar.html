@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Fixed navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            {% if current_user.is_authenticated %}
+            <li class="active"><a class="nav-link"
+                    href="{{url_for('users.show', username=current_user.username)}}">Users</a></li>
+            <li class="active"><a class="nav-link" href="/signout">Sign Out</a></li>
+            <li class="active"><a class="nav-link" href="{{url_for('users.edit', id=current_user.id)}}">Settings</a>
+            </li>
+            <li class="active"><a class="nav-link" href="/donation_payment">Donation</a></li>
+            <li class="active"><a class="nav-link" href="/followers">Followers</a></li>
+            <form class="form-inline" method="POST" action="{{ url_for('users.search') }}">
+                <input name="username-search" class="form-control mr-sm-2" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            {% else %}
+            <li class="active"><a class="nav-link" href="/signin">Sign In</a></li>
+            <li class="active"><a class="nav-link" href="/signup">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

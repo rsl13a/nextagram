@@ -1,0 +1,29 @@
+<head>
+    <meta charset="utf-8">
+    <script src="https://js.braintreegateway.com/web/dropin/1.19.0/js/dropin.min.js"></script>
+</head>
+
+<body>
+    <form id="pmn-form" action="{{url_for('create_purchase')}}" method="POST">
+        <input type="hidden" name="payment_method_nonce" id="pmn">
+    </form>
+    <div id="dropin-container"></div>
+    <button id="submit-button">Request payment method</button>
+    <script>
+        const button = document.querySelector('#submit-button');
+        const form = document.getElementById('pmn-form')
+        const nonceContainer = document.getElementById('pmn')
+        braintree.dropin.create({
+            authorization: "{{client_token}}",
+            container: '#dropin-container'
+        }, function (err, instance) {
+            button.addEventListener('click', function () {
+                instance.requestPaymentMethod(function (err, payload) {
+                    nonceContainer.value = payload.nonce
+                    form.submit()
+                });
+            });
+        });
+
+    </script>
+</body>

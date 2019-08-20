@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+    <h1>Please select your payment</h1>
+    <a class="btn btn-primary" href="{{url_for('client_token')}}">RM 10</a>
+    <a class="btn btn-primary" href="{{url_for('client_token')}}">RM 20</a>
+    <a class="btn btn-primary" href="{{url_for('client_token')}}">RM 30</a>
+    <a class="btn btn-primary" href="{{url_for('client_token')}}">RM 40</a>
+    <a class="btn btn-primary" href="{{url_for('client_token')}}">RM 50</a>
+    <a class="btn btn-primary" href="{{url_for('client_token')}}">Other amount</a>
+</div>
+
+{% endblock %}

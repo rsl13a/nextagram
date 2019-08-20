@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+    <h1>{{user.username}} profile</h1>
+    <a class="btn btn-primary" href="#">Follow</a>
+
+</div>
+
+<body>
+
+    <h1>Upload Your Files</h1>
+
+    <form action="{{url_for('profile_upload')}}" method="POST" enctype="multipart/form-data">
+
+        <input type="file" name="user_file">
+        <br></br>
+        <button type="submit">Upload</button>
+
+    </form>
+
+</body>
+
+
+
+{% for image in images %}
+<img src="{{image.images_url}}" class="mx-auto d-block" style="width:50%">
+{% endfor %}
+
+{% endblock %}

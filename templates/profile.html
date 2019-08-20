@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+
+    <h1>Upload Your Files</h1>
+
+    <form action="{{url_for('profile_upload')}}" method="POST" enctype="multipart/form-data">
+
+        <input type="file" name="user_file">
+        <br></br>
+        <button type="submit">Upload</button>
+
+    </form>
+
+</body>
+
+</html>
+
+
+
+{% endblock %}

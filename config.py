@@ -25,7 +25,17 @@ class DevelopmentConfig(Config):
     DEBUG = True
     ASSETS_DEBUG = False
 
+
 class TestingConfig(Config):
     TESTING = True
     DEBUG = True
     ASSETS_DEBUG = True
+
+
+S3_BUCKET = os.environ.get("S3_BUCKET")
+S3_KEY = os.environ.get("S3_KEY")
+S3_SECRET = os.environ.get("S3_SECRET")
+
+SECRET_KEY = os.urandom(32)
+DEBUG = True
+PORT = 5000
